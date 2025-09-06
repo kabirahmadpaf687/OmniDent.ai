@@ -32,7 +32,7 @@ const Header = () => {
     transition: {
       delay: i * 0.2, // stagger each item
       duration: 0.6,
-      ease: ["easeOut"],
+      ease: "easeOut",
     },
   }),
 };
