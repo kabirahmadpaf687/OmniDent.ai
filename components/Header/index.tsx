@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
-
 import menuData from "./menuData";
 import PhosphorIcon from "../PhosphorIcon";
 
@@ -24,18 +23,18 @@ const Header = () => {
 
   
 
-  const containerVariants = {
-  hidden: { opacity: 0, x: 100 }, // start off to the right
-  visible: (i: number) => ({
+const containerVariants = {
+  hidden: { opacity: 0, x: 100 },
+  visible: {
     opacity: 1,
     x: 0,
     transition: {
-      delay: i * 0.2, // stagger each item
       duration: 0.6,
       ease: "easeOut",
     },
-  }),
+  },
 };
+
 
   return (
     <>
@@ -77,10 +76,10 @@ const Header = () => {
               {menuData.map((menuItem, index) => (
                 <motion.div
                   key={index}
-                  custom={index}
-                  initial="hidden"
-                  animate="visible"
-                  variants={containerVariants}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
+
                 >
                   <Link
                     href={menuItem.path || "#"}
